@@ -2,12 +2,12 @@ activateAgent(){
     eval "$(ssh-agent -s)"
 }
 
-getAgentProcess(){
-    echo $(ps aux | grep ssh-agent)
+getAgentPid(){
+    echo "$SSH_AGENT_PID"
 }
 
 isAgentActive(){
-    [ -n "$(getAgentProcess)" ]
+    [ -n "$(getAgentPid)" ]
 }
 
 if ! isAgentActive; then
